@@ -4,19 +4,22 @@ import sys
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.const import C_WHITE, WIN_HEIGHT
+from code.const import C_WHITE, WIN_HEIGHT, EVENT_ENEMY, SPAWN_TIME
 from code.entity import Entity
 from code.entityFactory import EntityFactory
 
 
 class Level:
     def __init__(self, window, name, game_mode):
-        self.timeout = 20000
         self.window = window
         self.name = name
         self.game_mode = game_mode
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('background_'))
+        self.entity_list.append(EntityFactory.get_entity('Player'))
+        self.timeout = 20000
+
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
 
     def run(self):
         pygame.mixer_music.load(f'./asset/{self.name}.ogg')
@@ -31,6 +34,8 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()  # Close Window
                     sys.exit()
+                if event.type == EVENT_ENEMY:
+                    self.entity_list.append(EntityFactory.get_entity('Enemy'))
 
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_WHITE, (10, 5))
             self.level_text(14, f'FPS: {clock.get_fps():.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
