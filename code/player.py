@@ -27,10 +27,10 @@ class Player(Entity):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE] and not self.is_jumping:
             self.is_jumping = True
-            self.jump_count = 7.5
+            self.jump_count = 8
 
         if self.is_jumping:
-            if self.jump_count >= -7.5:
+            if self.jump_count >= -8:
                 neg = 1
                 if self.jump_count < 0:
                     neg = -1
