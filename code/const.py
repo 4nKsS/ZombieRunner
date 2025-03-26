@@ -3,6 +3,7 @@ import pygame
 
 C_RED = (205, 92, 92)
 C_WHITE = (255, 255, 255)
+C_GREEN = (0, 128, 0)
 
 # E
 EVENT_ENEMY = pygame.USEREVENT + 1
@@ -45,7 +46,7 @@ ENTITY_DAMAGE = {
     'background_6': 0,
     'background_7': 0,
     'run_1': 1,
-    'go_1': 10,
+    'go_1': 25,
 
 }
 

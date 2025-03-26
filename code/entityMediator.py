@@ -10,7 +10,6 @@ class EntityMediator:
         if isinstance(ent, Enemy):
             if ent.rect.right < 0:
                 ent.health = 0
-
         pass
 
     @staticmethod
@@ -30,7 +29,6 @@ class EntityMediator:
                 ent2.health -= ent1.damage
                 ent1.last_dmg = ent2.name
                 ent2.last_dmg = ent1.name
-
 
     @staticmethod
     def verify_collision(entity_list: list[Entity]):
