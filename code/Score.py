@@ -8,11 +8,9 @@ cursor = conn.cursor()
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS scores (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    player_id TEXT NOT NULL,
     time_elapsed REAL
 )
 ''')
-
 conn.commit()
 conn.close()
 
